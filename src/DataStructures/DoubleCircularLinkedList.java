@@ -4,15 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
-/**
- * Double Circular Linked List (Doubly + Circular)
- *
- * - tail.next -> head
- * - head.prev -> tail
- *
- * ملاحظة: هذه ليست java.util.List كاملة، لكنها تدعم أهم العمليات المطلوبة للمشروع
- * (add / addFirst / addLast / get / remove / size / iterator).
- */
+
 public class DoubleCircularLinkedList<T> implements Iterable<T> {
 
     private static final class Node<T> {
@@ -38,16 +30,12 @@ public class DoubleCircularLinkedList<T> implements Iterable<T> {
         return size == 0;
     }
 
-    /**
-     * يضيف عنصر في نهاية القائمة.
-     */
+   
     public void add(T value) {
         addLast(value);
     }
 
-    /**
-     * يضيف عنصر في بداية القائمة.
-     */
+    
     public void addFirst(T value) {
         Node<T> node = new Node<>(value);
         if (head == null) {
@@ -67,9 +55,7 @@ public class DoubleCircularLinkedList<T> implements Iterable<T> {
         size++;
     }
 
-    /**
-     * يضيف عنصر في نهاية القائمة.
-     */
+    
     public void addLast(T value) {
         Node<T> node = new Node<>(value);
         if (head == null) {
@@ -88,9 +74,7 @@ public class DoubleCircularLinkedList<T> implements Iterable<T> {
         size++;
     }
 
-    /**
-     * يحصل على عنصر حسب index (0-based).
-     */
+    
     public T get(int index) {
         return nodeAt(index).data;
     }
@@ -106,9 +90,7 @@ public class DoubleCircularLinkedList<T> implements Iterable<T> {
         return false;
     }
 
-    /**
-     * يزيل أول عنصر يساوي value.
-     */
+    
     public boolean remove(T value) {
         if (head == null) return false;
 
@@ -139,7 +121,7 @@ public class DoubleCircularLinkedList<T> implements Iterable<T> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
-        // تحسين بسيط: لو index قريب من النهاية نمشي عكسي
+        
         if (index <= size / 2) {
             Node<T> current = head;
             for (int i = 0; i < index; i++) current = current.next;
